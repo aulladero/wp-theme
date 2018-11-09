@@ -53,3 +53,20 @@ function register_widgets(){
 
 }//end register_widgets()
 add_action( 'widgets_init', 'register_widgets' );
+
+function custom_excerpt_length( $length ) {
+    return 16;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function new_excerpt_more( $more ) {
+    return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+function wds_get_ID_by_page_name($page_name)
+{
+     global $wpdb;
+     $page_name_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name ='".$page_name."'");
+     return $page_name_id;
+}
