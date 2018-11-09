@@ -7,13 +7,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 function wpgt_scripts() {
 	// Frontend scripts.
 	if ( ! is_admin() ) {
-		//wp_enqueue_script( 'jquery');
+		wp_enqueue_script( 'jquery');
 		// Enqueue vendors first.
-		wp_enqueue_script( 'wpgt_vendorJs', get_template_directory_uri() . '/js/vendors.min.js' );
+		wp_enqueue_script( 'wpgt_vendorJs', get_template_directory_uri() . '/js/vendors.js' );
 		// Enqueue custom JS after vendors.
-		wp_enqueue_script( 'wpgt_customJs', get_template_directory_uri() . '/js/custom.min.js' );
+		wp_enqueue_script( 'wpgt_customJs', get_template_directory_uri() . '/js/custom.js' );
 		// Minified and Concatenated styles.
-		wp_enqueue_style( 'wpgt_style', get_template_directory_uri() . '/style.min.css', array(), '1.0', 'all' );
+		wp_enqueue_style( 'wpgt_style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all' );
 	}
 }
 // Hook.
