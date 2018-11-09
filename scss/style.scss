@@ -2,10 +2,6 @@
 
 @import 'variables';
 @import 'mixins';
-@import 'wordpress';
-
-@import 'slick/slick';
-@import 'slick/slick-theme';
 
 // Global styles
 @include foundation-global-styles;
@@ -17,30 +13,32 @@
 
 // Generic components
 @include foundation-button;
-@include foundation-button-group;
+//@include foundation-button-group;
 @include foundation-close-button;
 @include foundation-label;
-@include foundation-progress-bar;
-@include foundation-slider;
-@include foundation-switch;
+//@include foundation-progress-bar;
+//@include foundation-slider;
+//@include foundation-switch;
 @include foundation-table;
 
 // Basic components
-@include foundation-badge;
+//@include foundation-badge;
 @include foundation-breadcrumbs;
 @include foundation-callout;
-@include foundation-card;
+//@include foundation-card;
 @include foundation-dropdown;
 @include foundation-pagination;
-@include foundation-tooltip;
+//@include foundation-tooltip;
 
 // Containers
 @include foundation-accordion;
 @include foundation-media-object;
-@include foundation-orbit;
+
+//@include foundation-orbit;
 @include foundation-responsive-embed;
 @include foundation-tabs;
 @include foundation-thumbnail;
+
 // Menu-based containers
 @include foundation-menu;
 @include foundation-menu-icon;
@@ -49,7 +47,7 @@
 @include foundation-dropdown-menu;
 
 // Layout components
-@include foundation-off-canvas;
+//@include foundation-off-canvas;
 @include foundation-reveal;
 @include foundation-sticky;
 @include foundation-title-bar;
@@ -61,9 +59,17 @@
 @include foundation-prototype-classes;
 
 
-//@import 'styles/general';
-//@import 'styles/header';
-//@import 'styles/footer';
-//@import 'styles/home';
-//@import 'styles/niveles';
-//@import 'styles/blog';
+@import 'styles/general';
+@import 'styles/header';
+@import 'styles/footer';
+@import 'styles/sliders';
+@import 'styles/home';
+@import 'styles/page';
+@import 'styles/blog';
+
+
+@import 'wordpress';
+
+
+@import 'slick/slick';
+@import 'slick/slick-theme';

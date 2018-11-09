@@ -7,8 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 function wpgt_scripts() {
 	// Frontend scripts.
 	if ( ! is_admin() ) {
+		//wp_enqueue_script( 'jquery');
 		// Enqueue vendors first.
-		wp_enqueue_script( 'jquery');
+		wp_enqueue_script( 'wpgt_vendorJs', get_template_directory_uri() . '/js/vendors.min.js' );
 		// Enqueue custom JS after vendors.
 		wp_enqueue_script( 'wpgt_customJs', get_template_directory_uri() . '/js/custom.min.js' );
 		// Minified and Concatenated styles.
