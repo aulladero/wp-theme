@@ -4,13 +4,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-/**
- * Scripts & Styles.
- *
- * Frontend with no conditions, Add Custom styles to wp_head.
- *
- * @since  1.0.0
- */
 function wpgt_scripts() {
 	// Frontend scripts.
 	if ( ! is_admin() ) {
