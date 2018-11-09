@@ -1,9 +1,11 @@
 @import 'foundation/foundation';
-//@import 'variables';
-//@import 'mixins';
-//@import 'wordpress';
-//@import 'slick/slick';
-//@import 'slick/slick-theme';
+
+@import 'variables';
+@import 'mixins';
+@import 'wordpress';
+
+@import 'slick/slick';
+@import 'slick/slick-theme';
 
 // Global styles
 @include foundation-global-styles;
