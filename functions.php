@@ -1,23 +1,12 @@
 <?php
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+function theme_enqueue_scripts(){
+    wp_enqueue_script('jquery');
+
+    wp_enqueue_style('style', get_bloginfo('template_url').'/style.css');
 }
-function wpgt_scripts() {
-	// Frontend scripts.
-	if ( ! is_admin() ) {
-		wp_enqueue_script( 'jquery');
-		// Enqueue vendors first.
-		wp_enqueue_script( 'wpgt_vendorJs', get_template_directory_uri() . '/js/vendors.js' );
-		// Enqueue custom JS after vendors.
-		wp_enqueue_script( 'wpgt_customJs', get_template_directory_uri() . '/js/custom.js' );
-		// Minified and Concatenated styles.
-		wp_enqueue_style( 'wpgt_style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all' );
-	}
-}
-// Hook.
-add_action( 'wp_enqueue_scripts', 'wpgt_scripts' );
+
 
 //Add Featured Image Support
 add_theme_support('post-thumbnails');
