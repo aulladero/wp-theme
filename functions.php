@@ -2,8 +2,18 @@
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 function theme_enqueue_scripts(){
-    wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery');
 
+	wp_register_script('what-input', get_bloginfo('template_url') . '/js/what-input.min.js', array(), false, true);
+    wp_enqueue_script('what-input');
+
+    wp_register_script('foundation', get_bloginfo('template_url') . '/js/foundation.min.js', array('jquery'), false, true);
+    wp_enqueue_script('foundation');
+
+    wp_register_script('slick', get_bloginfo('template_url') . '/js/slick.min.js', array('jquery'), false, true);
+    wp_enqueue_script('slick');
+
+    //wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,600i,700,900');
     wp_enqueue_style('style', get_bloginfo('template_url').'/style.css');
 }
 
