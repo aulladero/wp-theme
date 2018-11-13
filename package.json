@@ -23,16 +23,11 @@
     "gulp-filter": "^5.1.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-merge-media-queries": "^0.2.1",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.2.0",
     "gulp-remember": "^1.0.1",
-    "gulp-rename": "^1.2.0",
-    "gulp-rtlcss": "^1.2.0",
     "gulp-sass": "^4.0.1",
-    "gulp-sort": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.2",
-    "gulp-uglifycss": "^1.0.6"
+    "gulp-sort": "^2.0.0"
   },
   "scripts": {
     "start": "gulp",
