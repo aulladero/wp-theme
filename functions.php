@@ -1,21 +1,28 @@
 <?php
+
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 function theme_enqueue_scripts(){
+	
+	wp_deregister_script('jquery');
+	wp_register_script('jquery', get_bloginfo('template_url') . '/js/jquery.js', array(), false, false);
+    wp_enqueue_script('jquery');
 
-	wp_register_script('modernizr', get_bloginfo('template_url') . '/js/modernizr.js');
-	wp_enqueue_script('modernizr');
+	wp_register_script('popper', get_bloginfo('template_url') . '/js/popper.js', array('jquery'), false, true);
+    wp_enqueue_script('popper');
 
-	wp_register_script('require', get_bloginfo('template_url') . '/js/vendor/requirejs/require.js', array(), false, true);
-	wp_enqueue_script('require');
+    wp_register_script('bootstrap', get_bloginfo('template_url') . '/js/bootstrap.js', array('jquery'), false, true);
+    wp_enqueue_script('bootstrap');
 
-	wp_register_script('global', get_bloginfo('template_url') . '/js/global.js', array('require'), false, true);
-	wp_enqueue_script('global');
+    wp_register_script('slick', get_bloginfo('template_url') . '/js/slick.min.js', array('jquery'), false, true);
+    wp_enqueue_script('slick');
+	
+    wp_register_script('custom', get_bloginfo('template_url') . '/js/custom.js', array('jquery','popper','bootstrap'), false, true);
+    wp_enqueue_script('custom');
 
-	wp_register_script('livereload', '<%= conf.get("url") %>:35729/livereload.js?snipver=1', null, false, true);
-	wp_enqueue_script('livereload');
-
-	wp_enqueue_style('global', get_bloginfo('template_url') . '/css/global.css');
+    wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css?family=Abril+Fatface|Lato:300,400,700');
+    wp_enqueue_style('style', get_bloginfo('template_url').'/style.css');
 }
+
 
 //Add Featured Image Support
 add_theme_support('post-thumbnails');
@@ -52,3 +59,35 @@ function register_widgets(){
 
 }//end register_widgets()
 add_action( 'widgets_init', 'register_widgets' );
+
+function custom_excerpt_length( $length ) {
+    return 16;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function new_excerpt_more( $more ) {
+    return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+function wds_get_ID_by_page_name($page_name)
+{
+     global $wpdb;
+     $page_name_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name ='".$page_name."'");
+     return $page_name_id;
+}
+
+add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
+
+// Register Custom Navigation Walker
+require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+
+function add_specific_menu_location_atts( $atts, $item, $args ) {
+    // check if the item is in the primary menu
+    if( $args->theme_location == 'secondary-nav' ) {
+      // add the desired attributes:
+      $atts['class'] = 'nav-link';
+    }
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3 );
