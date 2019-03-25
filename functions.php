@@ -4,19 +4,19 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 function theme_enqueue_scripts(){
 	
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', get_bloginfo('template_url') . '/js/jquery.js', array(), false, false);
+	wp_register_script('jquery', get_bloginfo('template_url') . '/js/jquery.slim.min.js', array(), false, false);
     wp_enqueue_script('jquery');
 
-	wp_register_script('popper', get_bloginfo('template_url') . '/js/popper.js', array('jquery'), false, true);
+	wp_register_script('popper', get_bloginfo('template_url') . '/js/popper.min.js', array('jquery'), false, true);
     wp_enqueue_script('popper');
 
-    wp_register_script('bootstrap', get_bloginfo('template_url') . '/js/bootstrap.js', array('jquery'), false, true);
+    wp_register_script('bootstrap', get_bloginfo('template_url') . '/js/bootstrap.min.js', array('jquery'), false, true);
     wp_enqueue_script('bootstrap');
 
     wp_register_script('slick', get_bloginfo('template_url') . '/js/slick.min.js', array('jquery'), false, true);
     wp_enqueue_script('slick');
 	
-    wp_register_script('custom', get_bloginfo('template_url') . '/js/custom.js', array('jquery','popper','bootstrap'), false, true);
+    wp_register_script('custom', get_bloginfo('template_url') . '/js/custom.js', array('jquery','popper','bootstrap', 'slick'), false, true);
     wp_enqueue_script('custom');
 
     wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css?family=Abril+Fatface|Lato:300,400,700');
