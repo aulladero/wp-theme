@@ -1,22 +1,21 @@
 <?php
-
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 function theme_enqueue_scripts(){
-	wp_enqueue_script('jquery');
 
-	wp_register_script('what-input', get_bloginfo('template_url') . '/js/what-input.min.js', array(), false, true);
-    wp_enqueue_script('what-input');
+	wp_register_script('modernizr', get_bloginfo('template_url') . '/js/modernizr.js');
+	wp_enqueue_script('modernizr');
 
-    wp_register_script('foundation', get_bloginfo('template_url') . '/js/foundation.min.js', array('jquery'), false, true);
-    wp_enqueue_script('foundation');
+	wp_register_script('require', get_bloginfo('template_url') . '/js/vendor/requirejs/require.js', array(), false, true);
+	wp_enqueue_script('require');
 
-    wp_register_script('slick', get_bloginfo('template_url') . '/js/slick.min.js', array('jquery'), false, true);
-    wp_enqueue_script('slick');
+	wp_register_script('global', get_bloginfo('template_url') . '/js/global.js', array('require'), false, true);
+	wp_enqueue_script('global');
 
-    //wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:400,600i,700,900');
-    wp_enqueue_style('style', get_bloginfo('template_url').'/style.css');
+	wp_register_script('livereload', '<%= conf.get("url") %>:35729/livereload.js?snipver=1', null, false, true);
+	wp_enqueue_script('livereload');
+
+	wp_enqueue_style('global', get_bloginfo('template_url') . '/css/global.css');
 }
-
 
 //Add Featured Image Support
 add_theme_support('post-thumbnails');
@@ -53,20 +52,3 @@ function register_widgets(){
 
 }//end register_widgets()
 add_action( 'widgets_init', 'register_widgets' );
-
-function custom_excerpt_length( $length ) {
-    return 16;
-}
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
-
-function new_excerpt_more( $more ) {
-    return '...';
-}
-add_filter('excerpt_more', 'new_excerpt_more');
-
-function wds_get_ID_by_page_name($page_name)
-{
-     global $wpdb;
-     $page_name_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name ='".$page_name."'");
-     return $page_name_id;
-}

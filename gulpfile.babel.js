@@ -153,6 +153,7 @@ gulp.task(
 	'default',
 	gulp.parallel( 'styles', 'images', browsersync, () => {
 		gulp.watch( config.watchPhp, reload ); // Reload on PHP file changes.
+		gulp.watch( config.watchJs, reload ); // Reload on JS file changes.
 		gulp.watch( config.watchStyles, gulp.parallel( 'styles' ) ); // Reload on SCSS file changes.
 		gulp.watch( config.imgSRC, gulp.series( 'images', reload ) ); // Reload on customJS file changes.
 	})

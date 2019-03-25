@@ -30,6 +30,8 @@ module.exports = {
 	watchStyles: './scss/**/*.scss', // Path to all *.scss files inside css folder and inside them.
 	watchPhp: './**/*.php', // Path to all PHP files.
 
+	watchJs: './js/**/*.js', // Path to all js files.
+
 	// Browsers you care about for autoprefixing. Browserlist https://github.com/ai/browserslist
 	// The following list is set as per WordPress requirements. Though, Feel free to change.
 	BROWSERS_LIST: [
